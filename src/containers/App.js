@@ -3,7 +3,7 @@ import CardList from "../components/CardList";
 import SearchBox from "../components/SearchBox";
 import "../containers/App.css";
 import Scroll from "../components/Scroll";
-
+import ErrorBoundary from '../components/ErrorBoundary';
 // Two states that App component owns
 class App extends Component {
   constructor() {
@@ -35,8 +35,10 @@ class App extends Component {
       <div className="tc">
         <h1 className="f2">RoboFriends</h1>
         <SearchBox searchChange={this.onSearchChange} />
-        <Scroll>
-          <CardList robots={filteredRobots} />
+          <Scroll>
+            <ErrorBoundary>
+              <CardList robots={filteredRobots} />
+              </ErrorBoundary>
         </Scroll>
       </div>
     );
